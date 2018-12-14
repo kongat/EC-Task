@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 
@@ -15,21 +16,23 @@ import {IconPlusCircle, IconMinusCircle } from 'angular-feather';
 
 
 @NgModule({
+
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ScrollPanelModule,
+    IconPlusCircle,
+    IconMinusCircle,
+    AppRoutingModule,
+  ],
   declarations: [
     AppComponent,
     CardsComponent,
     CardDetailComponent,
     WelcomePageComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ScrollPanelModule,
-    IconPlusCircle,
-    IconMinusCircle
-  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

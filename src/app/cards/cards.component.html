@@ -1,0 +1,75 @@
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/welcome']">Home</a>
+</nav>
+<div class="container-fluid" style="height: 100%; margin-top:3rem">
+  <div class="py-5 text-center">
+    <img
+      class="d-block mx-auto mb-4"
+      src="../../assets/img/yugioh-png-file-official-yu-gi-oh-logo-png-500.png"
+      alt=""
+    />
+  </div>
+
+  <div class=" d-flex w-100 h-100 p-3 mx-auto flex-column ">
+    <div class="row">
+      <div class="col-md-3 mb-4" id="list">
+        <h4 class="d-flex justify-content-between align-items-center ">
+          <span class="text-muted">Available Cards</span>
+          <span class="badge badge-secondary badge-pill">{{
+            cards.length
+          }}</span>
+        </h4>
+        <p-scrollPanel [style]="{ width: '100%', height: '100%' }">
+          <ul class="list-group mb-3" *ngFor="let card of cards">
+            <li
+              class="list-group-item d-flex justify-content-between lh-condensed"
+            >
+              <div>
+                <a [routerLink]="[card.name]"
+                  ><h6 class="my-0">{{ card.name }}</h6></a
+                >
+                <small class="text-muted">{{ card.card_type }}</small>
+              </div>
+
+              <i-plus-circle
+                style="float:right;margin-bottom:2px"
+                (click)="addToStarting(card)"
+              ></i-plus-circle>
+            </li>
+          </ul>
+        </p-scrollPanel>
+      </div>
+      <div class="col-md-9 mb-4">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="d-flex justify-content-between align-items-center ">
+              <span class="text-muted">Choose your Starting Cards</span>
+              <span class="badge badge-secondary badge-pill">{{
+                startingCards.length
+              }}</span>
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let removedCard of startingCards">
+            <img
+              class="card-img-top'"
+              src="http://52.57.88.137/api/card_image/{{removedCard.name}}"
+              alt="Generic placeholder image"
+              width="140"
+              height="140"
+            />
+            <i-minus-circle
+              style="margin-left:2px"
+              (click)="removeFromStarting(removedCard)"
+            ></i-minus-circle>
+            <h4 class="text-muted">{{ removedCard.name }}</h4>
+          </div>
+        </div>
+
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

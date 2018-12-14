@@ -1,0 +1,27 @@
+<div *ngIf="card" id="detail">
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="text-muted">Card Info</h2>
+      <img class="card-img-top" id="detail-image" [src]="cardImageUrl" />
+    </div>
+    <div class="col-md-8">
+      <h2 class="text-muted">{{ card.name }}</h2>
+      <h4 class="text-muted">Description</h4>
+      <p>{{ card.text }}</p>
+      <div *ngIf="card.card_type === 'monster'">
+        <span class="text-muted">Family : </span> {{ card.family }}
+
+        <span class="text-muted">Type : </span> {{ card.type }}
+
+        <span class="text-muted">Level : </span> {{ card.level }}
+
+        <span class="text-muted">Attack : </span> {{ card.atk }}
+
+        <span class="text-muted">Defense : </span> {{ card.def }}
+      </div>
+      <div *ngIf="card.card_type !== 'monster'">
+        <span class="text-muted">Property : </span> {{ card.property }}
+      </div>
+    </div>
+  </div>
+</div>
